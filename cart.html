@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cart — Crux Supply</title></head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html">Crux Supply</a>
+      <nav class="nav-links">
+        <a href="index.html#new">New</a>
+        <a href="index.html#shoes">Shoes</a>
+        <a href="index.html#chalk">Chalk</a>
+        <a href="index.html#chalkbags">Chalk Bags</a>
+        <a href="index.html#skin">Skin Care</a>
+        <a href="index.html#pads">Crash Pads</a>
+        <a href="index.html#training">Training</a>
+      </nav>
+      <div class="nav-actions">
+        <button onclick="location.href='index.html#search'">Search</button>
+        <button onclick="location.href='account.html'">Account</button>
+        <button onclick="location.href='cart.html'">Cart</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1>Your Cart</h1>
+    <table border="1" cellpadding="6" cellspacing="0">
+      <tr><th>Item</th><th>Qty</th><th>Price</th><th>Total</th></tr>
+      <tr><td>EdgePro LV</td><td>1</td><td>$149</td><td>$149</td></tr>
+    </table>
+    <p>Subtotal: $149</p>
+    <a href="checkout.html"><button>Proceed to Checkout</button></a>
+  </main>
+
+  <footer>
+    <p>© <span id="y"></span> Crux Supply.</p>
+    <nav>
+      <a href="faq.html">Shipping & Returns</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

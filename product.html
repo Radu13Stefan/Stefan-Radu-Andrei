@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product — Crux Supply</title>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html">Crux Supply</a>
+      <nav class="nav-links">
+        <a href="index.html#new">New</a>
+        <a href="index.html#shoes">Shoes</a>
+        <a href="index.html#chalk">Chalk</a>
+        <a href="index.html#chalkbags">Chalk Bags</a>
+        <a href="index.html#skin">Skin Care</a>
+        <a href="index.html#pads">Crash Pads</a>
+        <a href="index.html#training">Training</a>
+      </nav>
+      <div class="nav-actions">
+        <button onclick="location.href='index.html#search'">Search</button>
+        <button onclick="location.href='account.html'">Account</button>
+        <button onclick="location.href='cart.html'">Cart</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="product-detail">
+      <div style="width:400px;height:400px;overflow:hidden;">
+        <img src="PASTE_IMAGE_LINK" alt="Product image" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <h1>EdgePro LV</h1>
+      <p>High-performance bouldering shoe built for precision.</p>
+      <p><strong>$149</strong></p>
+      <button onclick="location.href='cart.html'">Add to Cart</button>
+    </section>
+
+    <section class="related">
+      <h2>Related Products</h2>
+      <ul>
+        <li><a href="product.html">Vertex All-Round</a></li>
+        <li><a href="product.html">GripMax Aggro</a></li>
+        <li><a href="product.html">Summit Eco</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="y"></span> Crux Supply. Climb smart. Land soft.</p>
+    <nav>
+      <a href="faq.html">Shipping & Returns</a>
+      <a href="contact.html">Contact</a>
+      <a href="about.html">About</a>
+    </nav>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

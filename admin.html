@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Admin — Crux Supply</title></head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="../index.html">Crux Supply</a>
+      <nav class="nav-links">
+        <a href="../index.html#new">New</a>
+        <a href="../index.html#shoes">Shoes</a>
+        <a href="../index.html#chalk">Chalk</a>
+        <a href="../index.html#chalkbags">Chalk Bags</a>
+        <a href="../index.html#skin">Skin Care</a>
+        <a href="../index.html#pads">Crash Pads</a>
+        <a href="../index.html#training">Training</a>
+      </nav>
+      <div class="nav-actions">
+        <button onclick="location.href='../index.html#search'">Search</button>
+        <button onclick="location.href='../account.html'">Account</button>
+        <button onclick="location.href='../cart.html'">Cart</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1>Admin Dashboard</h1>
+    <ul>
+      <li><a href="#">Add New Product</a></li>
+      <li><a href="#">View Orders</a></li>
+      <li><a href="#">Manage Inventory</a></li>
+    </ul>
+  </main>
+
+  <footer>
+    <p>© <span id="y"></span> Crux Supply.</p>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

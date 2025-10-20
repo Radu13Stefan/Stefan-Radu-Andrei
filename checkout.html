@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Checkout — Crux Supply</title></head>
+<body>
+  <header>
+    <div class="nav">
+      <a class="brand" href="index.html">Crux Supply</a>
+      <nav class="nav-links">
+        <a href="index.html#new">New</a>
+        <a href="index.html#shoes">Shoes</a>
+        <a href="index.html#chalk">Chalk</a>
+        <a href="index.html#chalkbags">Chalk Bags</a>
+        <a href="index.html#skin">Skin Care</a>
+        <a href="index.html#pads">Crash Pads</a>
+        <a href="index.html#training">Training</a>
+      </nav>
+      <div class="nav-actions">
+        <button onclick="location.href='index.html#search'">Search</button>
+        <button onclick="location.href='account.html'">Account</button>
+        <button onclick="location.href='cart.html'">Cart</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <h1>Checkout</h1>
+    <form>
+      <h3>Shipping Information</h3>
+      <input type="text" placeholder="Full Name" required>
+      <input type="text" placeholder="Address" required>
+      <input type="text" placeholder="City" required>
+      <input type="text" placeholder="Postal Code" required>
+
+      <h3>Payment</h3>
+      <input type="text" placeholder="Card Number" required>
+      <input type="text" placeholder="Expiry Date (MM/YY)" required>
+      <input type="text" placeholder="CVV" required>
+
+      <button type="submit">Complete Order</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>© <span id="y"></span> Crux Supply.</p>
+    <nav>
+      <a href="faq.html">Shipping & Returns</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
