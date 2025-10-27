@@ -4,6 +4,206 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Crux Supply — Bouldering & Climbing Gear</title>
+  <style>
+  :root{
+    --green-700:#2e7d32;   /* primary green */
+    --green-600:#388e3c;
+    --green-50:#e8f5e9;    /* light tint */
+    --brown-700:#795548;   /* accent brown */
+    --brown-600:#6d4c41;
+    --ink:#1b1b1b;
+    --muted:#5a5a5a;
+    --bg:#f5f3ef;          /* warm paper */
+    --card:#ffffff;
+    --radius:14px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+  }
+
+  /* Container rhythm */
+  main, header, footer, section{
+    width:100%;
+  }
+  section{
+    max-width:1100px;
+    margin:48px auto;
+    padding:0 16px;
+  }
+
+  /* Header / Nav */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:linear-gradient(0deg,rgba(255,255,255,0.92),rgba(255,255,255,0.98));
+    backdrop-filter:saturate(1.2) blur(6px);
+    border-bottom:1px solid rgba(0,0,0,.06);
+  }
+  .nav{
+    max-width:1100px; margin:0 auto; padding:14px 16px;
+    display:flex; align-items:center; gap:16px; justify-content:space-between;
+  }
+  .brand{
+    font-weight:800; letter-spacing:.2px; text-decoration:none;
+    color:var(--green-700); font-size:1.1rem;
+  }
+  .nav-links{display:flex; gap:14px; flex-wrap:wrap}
+  .nav-links a{
+    color:var(--muted); text-decoration:none; padding:6px 8px; border-radius:10px;
+  }
+  .nav-links a:hover{ background:var(--green-50); color:var(--green-700) }
+
+  .nav-actions button{
+    border:1px solid rgba(0,0,0,.08);
+    background:var(--card); color:var(--ink);
+    padding:8px 12px; border-radius:10px; cursor:pointer;
+  }
+  .nav-actions button:hover{ border-color:var(--green-600); color:var(--green-700) }
+
+  /* Hero */
+  .hero{
+    padding:64px 16px;
+    background:
+      radial-gradient(1200px 400px at 50% -20%, rgba(46,125,50,.12), transparent 60%),
+      radial-gradient(800px 300px at 100% 0%, rgba(121,85,72,.10), transparent 60%);
+  }
+  .hero h1{
+    margin:0 0 18px; font-size:clamp(1.6rem, 2.4vw + 1rem, 2.4rem);
+    color:var(--ink);
+  }
+  .hero-cta{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
+  .hero-cta a{
+    display:inline-block; text-decoration:none; font-weight:600;
+    padding:10px 14px; border-radius:999px;
+    border:1px solid var(--green-600); color:white; background:var(--green-700);
+  }
+  .hero-cta a:nth-child(2){
+    color:var(--brown-700); background:white; border-color:var(--brown-700);
+  }
+  .hero-cta a:hover{ filter:brightness(.97) }
+
+  /* Headings */
+  h2{ margin:0 0 16px; color:var(--brown-700); font-size:1.3rem }
+
+  /* Product grid */
+  #shoes > div,
+  #chalk > div,
+  #chalkbags > div,
+  #skin > div,
+  #pads > div,
+  #training > div{
+    display:flex; gap:20px; flex-wrap:wrap;
+  }
+
+  article{
+    background:var(--card);
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:var(--radius);
+    padding:14px;
+    box-shadow:0 1px 0 rgba(0,0,0,.03);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  article:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 20px rgba(46,125,50,.08);
+  }
+  article h3{ margin:12px 0 6px; font-size:1.05rem }
+  article p{ margin:0 0 10px; color:var(--muted) }
+  article button{
+    display:inline-block; padding:8px 12px; cursor:pointer;
+    background:var(--green-700); color:#fff; border:0; border-radius:10px;
+  }
+  article button:hover{ background:var(--green-600) }
+
+  /* Image wrappers you already have inline get a soft frame */
+  article > div{
+    border-radius:12px; overflow:hidden;
+    border:1px solid rgba(0,0,0,.06);
+    background:#fff;
+  }
+
+  /* Newsletter */
+  #search{
+    background:var(--green-50);
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:var(--radius);
+    padding:24px 16px;
+  }
+  #search form{ display:flex; gap:10px; flex-wrap:wrap }
+  #search input[type="email"]{
+    flex:1 1 260px; padding:10px 12px;
+    border:1px solid rgba(0,0,0,.15); border-radius:10px;
+  }
+  #search button{
+    padding:10px 14px; border-radius:10px; border:0;
+    background:var(--brown-700); color:#fff; cursor:pointer;
+  }
+  #search button:hover{ background:var(--brown-600) }
+
+  /* Footer */
+  footer{
+    border-top:1px solid rgba(0,0,0,.06);
+    padding:24px 16px; margin-top:48px; background:#fff;
+  }
+  footer p{ margin:0 0 8px; color:var(--muted) }
+  footer nav{ display:flex; gap:14px; flex-wrap:wrap }
+  footer a{ color:var(--green-700); text-decoration:none }
+  footer a:hover{ text-decoration:underline }
+
+  /* Small screens */
+  @media (max-width:720px){
+    .nav{ gap:10px }
+    .nav-links{ display:none } /* keep it simple; could add a burger later */
+  }
+  /* Shop by Category section */
+#new {
+  background: var(--green-50);
+  border-radius: var(--radius);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  padding: 32px 16px;
+  text-align: center;
+  max-width: 1100px;
+  margin: 48px auto;
+}
+
+#new h2 {
+  color: var(--brown-700);
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+#new div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+#new a {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--green-700);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+#new a:hover {
+  background: var(--green-600);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(46, 125, 50, 0.2);
+}
+
+</style>
+
 </head>
 <body>
   <header>
@@ -11,7 +211,7 @@
       <a class="brand" href="index.html">Crux Supply</a>
       <nav class="nav-links">
         <a href="index.html#new">New</a>
-        <a href="index.html#shoes">Shoes</a>
+        <a href="index.html#shoes">Shoes</a> 
         <a href="index.html#chalk">Chalk</a>
         <a href="index.html#chalkbags">Chalk Bags</a>
         <a href="index.html#skin">Skin Care</a>
@@ -92,7 +292,7 @@
       <div style="display: flex; gap: 20px; flex-wrap: wrap;">
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="PureGrip chalk ball" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk1.jpg" alt="PureGrip chalk ball" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>PureGrip Chalk Ball</h3>
           <p>Price: $7</p>
@@ -100,7 +300,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="PureGrip 300g chalk refill" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk2.jpg" alt="PureGrip 300g chalk refill" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>PureGrip Refill 300g</h3>
           <p>Price: $14</p>
@@ -108,7 +308,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="LiquidGrip Pro liquid chalk" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk3.jpeg" alt="LiquidGrip Pro liquid chalk" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>LiquidGrip Pro</h3>
           <p>Price: $16 · Fast-drying formula</p>
@@ -116,7 +316,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="EcoGrip chalk alternative" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk4.webp" alt="EcoGrip chalk alternative" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>EcoGrip Blend</h3>
           <p>Price: $12 · Biodegradable chalk alternative</p>
@@ -130,7 +330,7 @@
       <div style="display: flex; gap: 20px; flex-wrap: wrap;">
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="Classic chalk bag with belt" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/bag1.jpeg" alt="Classic chalk bag with belt" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>Classic Chalk Bag</h3>
           <p>Price: $25 · Adjustable belt included</p>
@@ -138,7 +338,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="Rolltop chalk bag water-resistant" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/bag2.jpg" alt="Rolltop chalk bag water-resistant" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>Rolltop Chalk Bag</h3>
           <p>Price: $32 · Water-resistant fabric</p>
@@ -146,7 +346,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="Boulder bucket pro large capacity" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/bag3.jpeg" alt="Boulder bucket pro large capacity" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>Boulder Bucket Pro</h3>
           <p>Price: $39 · Large capacity with brush holders</p>
@@ -154,7 +354,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="Mini chalk bag compact" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/bag4.jpg" alt="Mini chalk bag compact" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>Mini Chalk Bag</h3>
           <p>Price: $19 · Compact and lightweight</p>
@@ -168,7 +368,7 @@
       <div style="display: flex; gap: 20px; flex-wrap: wrap;">
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="Repair balm for climbers' skin" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/skin1.jpeg" alt="Repair balm for climbers' skin" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>Repair Balm</h3>
           <p>Price: $12 · Natural healing salve</p>
@@ -176,7 +376,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="Finger tape roll" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/skin2.webp" alt="Finger tape roll" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>Finger Tape Roll</h3>
           <p>Price: $8 · 1.5cm width, long-lasting adhesive</p>
@@ -184,7 +384,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="Skin file kit for calluses" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/sin3.jpeg" alt="Skin file kit for calluses" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>Skin File Kit</h3>
           <p>Price: $19 · Keep calluses smooth and healthy</p>
@@ -192,7 +392,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="Grip salve XL" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/skin4.png" alt="Grip salve XL" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>Grip Salve XL</h3>
           <p>Price: $18 · Deep recovery for heavy training days</p>
@@ -206,7 +406,7 @@
       <div style="display: flex; gap: 20px; flex-wrap: wrap;">
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="CrashPad Solo compact pad" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/crash1.jpeg" alt="CrashPad Solo compact pad" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>CrashPad Solo</h3>
           <p>Price: $219 · Compact daily driver</p>
@@ -214,7 +414,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="CrashPad Mega oversized pad" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/crash2.jpeg" alt="CrashPad Mega oversized pad" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>CrashPad Mega</h3>
           <p>Price: $329 · Oversized coverage for highballs</p>
@@ -222,7 +422,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="CrashPad Duo folding pad" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/crash3.webp" alt="CrashPad Duo folding pad" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>CrashPad Duo</h3>
           <p>Price: $279 · Two-panel folding pad for easy carry</p>
@@ -230,7 +430,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="CrashPad Pro reinforced pad" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/crash4.jpeg" alt="CrashPad Pro reinforced pad" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>CrashPad Pro</h3>
           <p>Price: $359 · Reinforced corners, improved foam density</p>
@@ -244,7 +444,7 @@
       <div style="display: flex; gap: 20px; flex-wrap: wrap;">
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="HangBoard Pro" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/train1.jpeg" alt="HangBoard Pro" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>HangBoard Pro</h3>
           <p>Price: $79</p>
@@ -252,7 +452,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="Grip rings pair" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/train2.jpeg" alt="Grip rings pair" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>Grip Rings (Pair)</h3>
           <p>Price: $29</p>
@@ -260,7 +460,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="Portable hang bar" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/train3.png" alt="Portable hang bar" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>Portable Hang Bar</h3>
           <p>Price: $59 · Travel training bar</p>
@@ -268,7 +468,7 @@
         </article>
         <article style="flex: 1; min-width: 250px;">
           <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="PASTE_IMAGE_LINK" alt="Finger strength kit" style="width:100%;height:100%;object-fit:cover;" />
+            <img src="Crux Supply — Bouldering & Climbing Gear_files/train4.jpg" alt="Finger strength kit" style="width:100%;height:100%;object-fit:cover;" />
           </div>
           <h3>Finger Strength Kit</h3>
           <p>Price: $89 · Full home setup for fingerboard and resistance bands</p>

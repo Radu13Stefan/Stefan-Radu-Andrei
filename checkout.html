@@ -1,6 +1,134 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Checkout — Crux Supply</title></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Checkout — Crux Supply</title>
+<style>
+/* ===== Shared palette (include once sitewide) ===== */
+:root{
+  --green-700:#2e7d32;
+  --green-600:#388e3c;
+  --green-50:#e8f5e9;
+  --brown-700:#795548;
+  --brown-600:#6d4c41;
+  --ink:#1b1b1b;
+  --muted:#5a5a5a;
+  --bg:#f5f3ef;
+  --card:#fff;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.6;
+}
+
+/* ===== Shared Header / Footer ===== */
+header{
+  position:sticky;top:0;z-index:20;
+  background:linear-gradient(0deg,rgba(255,255,255,.92),rgba(255,255,255,.98));
+  backdrop-filter:saturate(1.2) blur(6px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.nav{
+  max-width:1100px;margin:0 auto;padding:14px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{font-weight:800;text-decoration:none;color:var(--green-700)}
+.nav-links{display:flex;gap:14px;flex-wrap:wrap}
+.nav-links a{color:var(--muted);text-decoration:none;padding:6px 8px;border-radius:10px}
+.nav-links a:hover{background:var(--green-50);color:var(--green-700)}
+.nav-actions button{
+  border:1px solid rgba(0,0,0,.08);background:var(--card);
+  color:var(--ink);padding:8px 12px;border-radius:10px;cursor:pointer;
+}
+.nav-actions button:hover{border-color:var(--green-600);color:var(--green-700)}
+
+footer{
+  border-top:1px solid rgba(0,0,0,.06);
+  background:#fff;
+  margin-top:48px;
+  padding:24px 16px;
+  text-align:center;
+  color:var(--muted);
+}
+footer nav{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+footer a{color:var(--green-700);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+/* ===== Checkout Page ===== */
+main{
+  max-width:700px;
+  margin:72px auto;
+  padding:0 16px;
+}
+main h1{
+  text-align:center;
+  color:var(--brown-700);
+  font-size:clamp(1.6rem,2.2vw + 1rem,2.4rem);
+  margin-bottom:32px;
+}
+form{
+  background:var(--card);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:var(--radius);
+  padding:28px;
+  box-shadow:0 1px 0 rgba(0,0,0,.03);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+form h3{
+  color:var(--green-700);
+  font-size:1.1rem;
+  margin-top:12px;
+  margin-bottom:4px;
+}
+input[type="text"]{
+  padding:12px 14px;
+  border:1px solid rgba(0,0,0,.15);
+  border-radius:10px;
+  background:#fff;
+  outline:none;
+  font-size:1rem;
+  transition:border-color .15s ease, box-shadow .15s ease;
+}
+input[type="text"]:focus{
+  border-color:var(--green-600);
+  box-shadow:0 0 0 3px rgba(46,125,50,.15);
+}
+button[type="submit"]{
+  margin-top:10px;
+  padding:12px 16px;
+  border:0;
+  border-radius:10px;
+  background:var(--green-700);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  font-size:1rem;
+  transition:background .15s ease,transform .15s ease;
+}
+button[type="submit"]:hover{
+  background:var(--green-600);
+  transform:translateY(-1px);
+}
+
+/* Subtle section divider */
+form h3:not(:first-child){
+  border-top:1px solid rgba(0,0,0,.06);
+  padding-top:16px;
+  margin-top:20px;
+}
+
+/* Responsive */
+@media(max-width:720px){
+  .nav-links{display:none}
+  form{padding:20px}
+}
+</style>
+</head>
 <body>
   <header>
     <div class="nav">

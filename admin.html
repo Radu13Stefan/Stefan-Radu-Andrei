@@ -1,6 +1,133 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Admin — Crux Supply</title></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Admin — Crux Supply</title>
+<style>
+/* ===== Shared palette (only include once sitewide) ===== */
+:root{
+  --green-700:#2e7d32;
+  --green-600:#388e3c;
+  --green-50:#e8f5e9;
+  --brown-700:#795548;
+  --brown-600:#6d4c41;
+  --ink:#1b1b1b;
+  --muted:#5a5a5a;
+  --bg:#f5f3ef;
+  --card:#fff;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.6;
+}
+
+/* ===== Shared Header / Footer ===== */
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:linear-gradient(0deg,rgba(255,255,255,.92),rgba(255,255,255,.98));
+  backdrop-filter:saturate(1.2) blur(6px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.nav{
+  max-width:1100px;
+  margin:0 auto;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.brand{font-weight:800;text-decoration:none;color:var(--green-700)}
+.nav-links{display:flex;gap:14px;flex-wrap:wrap}
+.nav-links a{color:var(--muted);text-decoration:none;padding:6px 8px;border-radius:10px}
+.nav-links a:hover{background:var(--green-50);color:var(--green-700)}
+.nav-actions button{
+  border:1px solid rgba(0,0,0,.08);
+  background:var(--card);
+  color:var(--ink);
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+}
+.nav-actions button:hover{border-color:var(--green-600);color:var(--green-700)}
+
+footer{
+  border-top:1px solid rgba(0,0,0,.06);
+  background:#fff;
+  margin-top:48px;
+  padding:24px 16px;
+  text-align:center;
+  color:var(--muted);
+}
+
+/* ===== Admin Dashboard ===== */
+main{
+  max-width:900px;
+  margin:72px auto;
+  padding:0 16px;
+}
+main h1{
+  text-align:center;
+  color:var(--brown-700);
+  margin-bottom:32px;
+  font-size:clamp(1.6rem,2.2vw + 1rem,2.4rem);
+}
+main ul{
+  list-style:none;
+  padding:0;
+  display:grid;
+  gap:18px;
+  max-width:480px;
+  margin:0 auto;
+}
+main li{
+  background:var(--card);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:var(--radius);
+  box-shadow:0 1px 0 rgba(0,0,0,.03);
+  transition:transform .12s ease, box-shadow .12s ease;
+}
+main li:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(46,125,50,.08);
+}
+main a{
+  display:block;
+  padding:16px 18px;
+  text-decoration:none;
+  font-weight:600;
+  color:var(--green-700);
+}
+main a:hover{
+  background:var(--green-50);
+  color:var(--green-600);
+}
+
+/* Optional admin badge or future sections */
+.admin-badge{
+  display:inline-block;
+  margin:0 auto 24px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:var(--green-700);
+  color:#fff;
+  font-size:.9rem;
+  font-weight:600;
+  text-align:center;
+}
+
+/* Responsive */
+@media(max-width:720px){
+  .nav-links{display:none}
+  main ul{gap:14px}
+}
+</style>
+</head>
 <body>
   <header>
     <div class="nav">
