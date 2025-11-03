@@ -1,4 +1,8 @@
-/* ===== Theme ===== */
+/* =========================================
+   Crux Supply — Global Style (Grid + Flex)
+   ========================================= */
+
+/* === Paletă culori și variabile === */
 :root{
   --green-700:#2e7d32;
   --green-600:#388e3c;
@@ -10,92 +14,251 @@
   --bg:#f5f3ef;
   --card:#fff;
   --radius:14px;
+  --space:16px;
 }
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
+
+/* === Reset & bază === */
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%;}
 body{
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--ink); background:var(--bg); line-height:1.6;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.6;
+  font-size:16px;
 }
 
-/* ===== Layout helpers ===== */
-.container{max-width:1100px; margin:0 auto; padding:0 16px}
-section{margin:48px 0}
+/* =========================================
+   1️⃣ GRID LAYOUT: header + nav + main + aside + footer
+   ========================================= */
+.site{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:220px 1fr 280px;   /* nav | main | aside */
+  grid-template-rows:auto 1fr auto;        /* header | content | footer */
+  grid-template-areas:
+    "header header header"
+    "nav main aside"
+    "footer footer footer";
+  gap:var(--space);
+  padding:var(--space);
+}
 
-/* ===== Header / Nav (shared) ===== */
-header{
-  position:sticky; top:0; z-index:20;
+/* Zone */
+header{grid-area:header;}
+nav{grid-area:nav;}
+main{grid-area:main;}
+aside{grid-area:aside;}
+footer{grid-area:footer;}
+
+/* =========================================
+   HEADER (sus)
+   ========================================= */
+.header-bar{
+  position:sticky;
+  top:0;
+  z-index:20;
   background:linear-gradient(0deg,rgba(255,255,255,.92),rgba(255,255,255,.98));
   backdrop-filter:saturate(1.2) blur(6px);
-  border-bottom:1px solid rgba(0,0,0,.06);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:var(--radius);
+  padding:10px var(--space);
 }
-.nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 16px}
-.nav .brand{font-weight:800; text-decoration:none; color:var(--green-700)}
-.nav-links{display:flex; gap:14px; flex-wrap:wrap}
-.nav-links a{color:var(--muted); text-decoration:none; padding:6px 8px; border-radius:10px}
-.nav-links a:hover{background:var(--green-50); color:var(--green-700)}
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.brand{
+  font-weight:800;
+  text-decoration:none;
+  color:var(--green-700);
+  font-size:1.2rem;
+}
 .nav-actions button{
-  border:1px solid rgba(0,0,0,.08); background:var(--card); color:var(--ink);
-  padding:8px 12px; border-radius:10px; cursor:pointer;
+  border:1px solid rgba(0,0,0,.1);
+  background:var(--card);
+  color:var(--ink);
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
 }
-.nav-actions button:hover{border-color:var(--green-600); color:var(--green-700)}
-
-/* ===== Footer (shared) ===== */
-footer{border-top:1px solid rgba(0,0,0,.06); background:#fff; margin-top:48px}
-footer .container{padding:24px 16px}
-footer p{margin:0 0 8px; color:var(--muted)}
-footer nav{display:flex; gap:14px; flex-wrap:wrap}
-footer a{color:var(--green-700); text-decoration:none}
-footer a:hover{text-decoration:underline}
-
-/* ===== About page ===== */
-.page-hero{
-  background:
-    radial-gradient(800px 260px at 100% 0%, rgba(121,85,72,.10), transparent 60%),
-    radial-gradient(1000px 320px at 0% 0%, rgba(46,125,50,.12), transparent 60%);
-  padding:56px 0 28px;
+.nav-actions button:hover{
+  border-color:var(--green-600);
+  color:var(--green-700);
 }
-.page-hero h1{
-  margin:0; font-size:clamp(1.6rem,2.2vw + 1rem,2.4rem);
-  color:var(--brown-700); text-align:center;
-}
-.page-intro{ text-align:center; color:var(--muted); margin-top:8px }
 
-.about-card{
+/* =========================================
+   NAV lateral (stânga)
+   ========================================= */
+.side-nav{
   background:var(--card);
   border:1px solid rgba(0,0,0,.06);
   border-radius:var(--radius);
-  padding:24px;
-  margin-top:24px;
+  padding:14px;
+}
+.side-nav h3{
+  margin-bottom:10px;
+  font-size:1rem;
+  color:var(--brown-700);
+}
+.side-nav a{
+  display:block;
+  padding:8px 10px;
+  margin-bottom:6px;
+  border-radius:10px;
+  text-decoration:none;
+  color:var(--muted);
+}
+.side-nav a:hover{
+  background:var(--green-50);
+  color:var(--green-700);
+}
+
+/* =========================================
+   MAIN (centru)
+   ========================================= */
+.main-card{
+  background:var(--card);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:var(--radius);
+  padding:clamp(14px,2vw,24px);
   box-shadow:0 1px 0 rgba(0,0,0,.03);
 }
-
-.about-grid{
-  display:grid; gap:24px; align-items:center;
-  grid-template-columns: 1.2fr 1fr;   /* text | image */
-}
-.about-grid img{
-  width:100%; height:auto; display:block;
-  border-radius:12px; border:1px solid rgba(0,0,0,.06);
-  background:#fff; object-fit:cover;
-}
-.lead{font-size:1.05rem; color:var(--ink)}
-.badge{
-  display:inline-block; margin-top:10px; padding:6px 10px; border-radius:999px;
-  background:var(--green-700); color:#fff; font-weight:600; font-size:.9rem;
+main h1{
+  color:var(--brown-700);
+  margin-bottom:16px;
+  font-size:clamp(1.3rem,2.2vw,2rem);
 }
 
-/* Buttons/links inside content */
-a.button{
-  display:inline-block; padding:10px 14px; border-radius:10px;
-  text-decoration:none; font-weight:600; color:#fff; background:var(--green-700);
+/* =========================================
+   ASIDE (dreapta)
+   ========================================= */
+.aside-card{
+  background:var(--card);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:var(--radius);
+  padding:14px;
 }
-a.button:hover{background:var(--green-600)}
+.aside-card h3{margin-top:0;color:var(--green-700);}
 
-/* Responsive */
+/* =========================================
+   FOOTER (jos)
+   ========================================= */
+footer{
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:var(--radius);
+  background:#fff;
+  padding:16px;
+  text-align:center;
+  color:var(--muted);
+}
+footer nav{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+footer a{
+  color:var(--green-700);
+  text-decoration:none;
+}
+footer a:hover{text-decoration:underline;}
+
+/* =========================================
+   2️⃣ FLEXBOX: Carduri produse
+   ========================================= */
+.product-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:20px;
+}
+.card{
+  flex:1 1 240px;
+  min-width:240px;
+  max-width:320px;
+  background:var(--card);
+  border:1px solid rgba(0,0,0,.06);
+  border-radius:var(--radius);
+  padding:12px;
+  box-shadow:0 1px 0 rgba(0,0,0,.03);
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+.card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(46,125,50,.08);
+}
+.card h3{margin:10px 0 6px;font-size:1.05rem;}
+.card p{margin:0 0 10px;color:var(--muted);}
+.card button{
+  display:inline-block;
+  padding:8px 12px;
+  border:0;
+  border-radius:10px;
+  background:var(--green-700);
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+}
+.card button:hover{background:var(--green-600);}
+
+/* =========================================
+   4️⃣ Fonturi + imagini responsive
+   ========================================= */
+img,video{
+  max-width:100%;
+  height:auto;
+  display:block;
+  margin:0 auto;
+  object-fit:cover;
+}
+h1,h2,h3{line-height:1.25;}
+p,li,a,button{line-height:1.6;}
+
+/* =========================================
+   5️⃣ Buton „Back to top”
+   ========================================= */
+.back-to-top{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  z-index:50;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  background:var(--green-700);
+  color:#fff;
+  text-decoration:none;
+  border-radius:999px;
+  font-weight:800;
+  border:1px solid rgba(0,0,0,.1);
+  box-shadow:0 6px 18px rgba(46,125,50,.25);
+}
+.back-to-top:hover{background:var(--green-600);}
+
+/* =========================================
+   3️⃣ Design responsiv — @media
+   ========================================= */
+/* Mobil sub 900px: stivuire secțiuni */
 @media (max-width:900px){
-  .about-grid{ grid-template-columns: 1fr; }
-}
-@media (max-width:720px){
-  .nav-links{ display:none; }
+  .site{
+    grid-template-columns:1fr;
+    grid-template-rows:auto auto auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "nav"
+      "aside"
+      "main"
+      "footer";
+    gap:var(--space);
+    padding:var(--space);
+  }
+  .header-bar{position:static;}
+  .side-nav{padding:10px;}
+  .product-grid{flex-direction:column;}
+  .card{max-width:100%;}
+  body{font-size:17px;}
 }

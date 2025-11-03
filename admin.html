@@ -1,166 +1,145 @@
 <!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Admin — Crux Supply</title>
-<style>
-/* ===== Shared palette (only include once sitewide) ===== */
-:root{
-  --green-700:#2e7d32;
-  --green-600:#388e3c;
-  --green-50:#e8f5e9;
-  --brown-700:#795548;
-  --brown-600:#6d4c41;
-  --ink:#1b1b1b;
-  --muted:#5a5a5a;
-  --bg:#f5f3ef;
-  --card:#fff;
-  --radius:14px;
-}
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--ink);
-  background:var(--bg);
-  line-height:1.6;
-}
-
-/* ===== Shared Header / Footer ===== */
-header{
-  position:sticky;
-  top:0;
-  z-index:20;
-  background:linear-gradient(0deg,rgba(255,255,255,.92),rgba(255,255,255,.98));
-  backdrop-filter:saturate(1.2) blur(6px);
-  border-bottom:1px solid rgba(0,0,0,.06);
-}
-.nav{
-  max-width:1100px;
-  margin:0 auto;
-  padding:14px 16px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-}
-.brand{font-weight:800;text-decoration:none;color:var(--green-700)}
-.nav-links{display:flex;gap:14px;flex-wrap:wrap}
-.nav-links a{color:var(--muted);text-decoration:none;padding:6px 8px;border-radius:10px}
-.nav-links a:hover{background:var(--green-50);color:var(--green-700)}
-.nav-actions button{
-  border:1px solid rgba(0,0,0,.08);
-  background:var(--card);
-  color:var(--ink);
-  padding:8px 12px;
-  border-radius:10px;
-  cursor:pointer;
-}
-.nav-actions button:hover{border-color:var(--green-600);color:var(--green-700)}
-
-footer{
-  border-top:1px solid rgba(0,0,0,.06);
-  background:#fff;
-  margin-top:48px;
-  padding:24px 16px;
-  text-align:center;
-  color:var(--muted);
-}
-
-/* ===== Admin Dashboard ===== */
-main{
-  max-width:900px;
-  margin:72px auto;
-  padding:0 16px;
-}
-main h1{
-  text-align:center;
-  color:var(--brown-700);
-  margin-bottom:32px;
-  font-size:clamp(1.6rem,2.2vw + 1rem,2.4rem);
-}
-main ul{
-  list-style:none;
-  padding:0;
-  display:grid;
-  gap:18px;
-  max-width:480px;
-  margin:0 auto;
-}
-main li{
-  background:var(--card);
-  border:1px solid rgba(0,0,0,.06);
-  border-radius:var(--radius);
-  box-shadow:0 1px 0 rgba(0,0,0,.03);
-  transition:transform .12s ease, box-shadow .12s ease;
-}
-main li:hover{
-  transform:translateY(-2px);
-  box-shadow:0 10px 20px rgba(46,125,50,.08);
-}
-main a{
-  display:block;
-  padding:16px 18px;
-  text-decoration:none;
-  font-weight:600;
-  color:var(--green-700);
-}
-main a:hover{
-  background:var(--green-50);
-  color:var(--green-600);
-}
-
-/* Optional admin badge or future sections */
-.admin-badge{
-  display:inline-block;
-  margin:0 auto 24px;
-  padding:6px 10px;
-  border-radius:999px;
-  background:var(--green-700);
-  color:#fff;
-  font-size:.9rem;
-  font-weight:600;
-  text-align:center;
-}
-
-/* Responsive */
-@media(max-width:720px){
-  .nav-links{display:none}
-  main ul{gap:14px}
-}
-</style>
+<html lang="en" id="top">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin — Crux Supply</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .main-card{padding:18px}
+    .admin-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+    .admin-title{margin:0;color:var(--brown-700);font-size:clamp(1.6rem,2.2vw + 1rem,2.2rem)}
+    .admin-actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;border:0;background:var(--green-700);color:#fff;font-weight:600;cursor:pointer;text-decoration:none}
+    .btn:hover{background:var(--green-600)}
+    .btn-outline{background:#fff;color:var(--green-700);border:1px solid var(--green-600)}
+    .btn-outline:hover{background:var(--green-50)}
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+    .kpi{background:var(--card);border:1px solid rgba(0,0,0,.06);border-radius:var(--radius);padding:14px}
+    .kpi h4{margin:0 0 6px;color:var(--muted);font-size:.95rem}
+    .kpi .val{font-size:1.6rem;font-weight:800;color:var(--ink)}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .card{background:var(--card);border:1px solid rgba(0,0,0,.06);border-radius:var(--radius);padding:14px}
+    .card h3{margin:0 0 10px;color:var(--green-700)}
+    table{width:100%;border-collapse:collapse}
+    th,td{text-align:left;padding:10px 8px}
+    th{background:var(--green-700);color:#fff}
+    tr:nth-child(even){background:var(--green-50)}
+    .list a{display:block;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--green-700);border:1px solid rgba(0,0,0,.06);background:#fff;margin-bottom:10px}
+    .list a:hover{background:var(--green-50)}
+    @media(max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.grid-2{grid-template-columns:1fr}}
+  </style>
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <a class="brand" href="../index.html">Crux Supply</a>
-      <nav class="nav-links">
-        <a href="../index.html#new">New</a>
-        <a href="../index.html#shoes">Shoes</a>
-        <a href="../index.html#chalk">Chalk</a>
-        <a href="../index.html#chalkbags">Chalk Bags</a>
-        <a href="../index.html#skin">Skin Care</a>
-        <a href="../index.html#pads">Crash Pads</a>
-        <a href="../index.html#training">Training</a>
-      </nav>
-      <div class="nav-actions">
-        <button onclick="location.href='../index.html#search'">Search</button>
-        <button onclick="location.href='../account.html'">Account</button>
-        <button onclick="location.href='../cart.html'">Cart</button>
+  <div class="site">
+    <header>
+      <div class="header-bar">
+        <div class="navbar">
+          <a class="brand" href="../index.html">Crux Supply</a>
+          <div class="nav-actions">
+            <button onclick="location.href='../index.html#search'">Search</button>
+            <button onclick="location.href='../account.html'">Account</button>
+            <button onclick="location.href='../cart.html'">Cart</button>
+          </div>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <h1>Admin Dashboard</h1>
-    <ul>
-      <li><a href="#">Add New Product</a></li>
-      <li><a href="#">View Orders</a></li>
-      <li><a href="#">Manage Inventory</a></li>
-    </ul>
-  </main>
+    <nav class="side-nav">
+      <h3>Admin Menu</h3>
+      <a href="#">Dashboard</a>
+      <a href="#">Add New Product</a>
+      <a href="#">View Orders</a>
+      <a href="#">Manage Inventory</a>
+      <a href="#">Customers</a>
+      <a href="#">Discounts</a>
+      <a href="../index.html#shoes">Shop Shoes</a>
+      <a href="../index.html#pads">Crash Pads</a>
+      <a href="../index.html#training">Training</a>
+    </nav>
 
-  <footer>
-    <p>© <span id="y"></span> Crux Supply.</p>
-  </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+    <main>
+      <div class="main-card">
+        <div class="admin-header">
+          <h1 class="admin-title">Admin Dashboard</h1>
+          <div class="admin-actions">
+            <a class="btn" href="#">Add Product</a>
+            <a class="btn btn-outline" href="#">Create Discount</a>
+          </div>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi"><h4>Today’s Orders</h4><div class="val">12</div></div>
+          <div class="kpi"><h4>Revenue</h4><div class="val">$1,984</div></div>
+          <div class="kpi"><h4>Pending Shipments</h4><div class="val">4</div></div>
+          <div class="kpi"><h4>Low Stock</h4><div class="val">7</div></div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Recent Orders</h3>
+            <table>
+              <tr><th>#</th><th>Customer</th><th>Total</th><th>Status</th></tr>
+              <tr><td>10025</td><td>A. Smith</td><td>$149</td><td>Paid</td></tr>
+              <tr><td>10024</td><td>L. Chen</td><td>$329</td><td>Processing</td></tr>
+              <tr><td>10023</td><td>M. Rossi</td><td>$89</td><td>Shipped</td></tr>
+              <tr><td>10022</td><td>J. Patel</td><td>$219</td><td>Paid</td></tr>
+            </table>
+          </div>
+
+          <div class="card">
+            <h3>Low Inventory</h3>
+            <div class="list">
+              <a href="#">EdgePro LV — Size 40 (5 left)</a>
+              <a href="#">CrashPad Solo — Forest (3 left)</a>
+              <a href="#">Grip Rings — Pair (8 left)</a>
+              <a href="#">PureGrip Refill 300g (6 left)</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2" style="margin-top:16px">
+          <div class="card">
+            <h3>Quick Actions</h3>
+            <div class="list">
+              <a href="#">Bulk Update Prices</a>
+              <a href="#">Upload Product CSV</a>
+              <a href="#">Manage Categories</a>
+              <a href="#">Edit Homepage Banners</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Announcements</h3>
+            <p>Winter sale campaign scheduled for Dec 1–10.</p>
+            <p>New crash pad foam supplier onboarded.</p>
+            <p>Remember to reconcile payouts every Friday.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <aside class="aside-card">
+      <h3>Session</h3>
+      <p><strong>Role:</strong> Admin</p>
+      <p><strong>Last login:</strong> Today, 09:24</p>
+      <hr style="border:none;border-top:1px solid rgba(0,0,0,.06);margin:12px 0">
+      <h3>Shortcuts</h3>
+      <p><a href="#">All Products</a></p>
+      <p><a href="#">Customers</a></p>
+      <p><a href="#">Reports</a></p>
+    </aside>
+
+    <footer>
+      <p>© <span id="y"></span> Crux Supply.</p>
+      <nav>
+        <a href="../index.html">Home</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </footer>
+  </div>
+
+  <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>

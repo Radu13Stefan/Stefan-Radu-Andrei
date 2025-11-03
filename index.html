@@ -1,23 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Crux Supply — Bouldering & Climbing Gear</title>
   <style>
   :root{
-    --green-700:#2e7d32;   /* primary green */
+    --green-700:#2e7d32;
     --green-600:#388e3c;
-    --green-50:#e8f5e9;    /* light tint */
-    --brown-700:#795548;   /* accent brown */
+    --green-50:#e8f5e9;
+    --brown-700:#795548;
     --brown-600:#6d4c41;
     --ink:#1b1b1b;
     --muted:#5a5a5a;
-    --bg:#f5f3ef;          /* warm paper */
+    --bg:#f5f3ef;
     --card:#ffffff;
     --radius:14px;
   }
-
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
@@ -27,78 +26,79 @@
     line-height:1.6;
   }
 
-  /* Container rhythm */
-  main, header, footer, section{
-    width:100%;
+  .site{
+    min-height:100vh;
+    display:grid;
+    grid-template-columns:220px 1fr 300px;
+    grid-template-rows:auto 1fr auto;
+    grid-template-areas:
+      "header header header"
+      "nav main aside"
+      "footer footer footer";
+    gap:16px;
+    padding:16px;
   }
-  section{
-    max-width:1100px;
-    margin:48px auto;
-    padding:0 16px;
-  }
+  header{grid-area:header}
+  nav.side-nav{grid-area:nav}
+  main{grid-area:main}
+  aside.aside-card{grid-area:aside}
+  footer{grid-area:footer}
 
-  /* Header / Nav */
+  main, header, footer, section{width:100%}
+  section{max-width:1100px;margin:48px auto;padding:0 16px}
+
   header{
     position:sticky; top:0; z-index:20;
     background:linear-gradient(0deg,rgba(255,255,255,0.92),rgba(255,255,255,0.98));
     backdrop-filter:saturate(1.2) blur(6px);
-    border-bottom:1px solid rgba(0,0,0,.06);
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:var(--radius);
   }
   .nav{
     max-width:1100px; margin:0 auto; padding:14px 16px;
     display:flex; align-items:center; gap:16px; justify-content:space-between;
   }
-  .brand{
-    font-weight:800; letter-spacing:.2px; text-decoration:none;
-    color:var(--green-700); font-size:1.1rem;
-  }
+  .brand{font-weight:800; letter-spacing:.2px; text-decoration:none; color:var(--green-700); font-size:1.1rem}
   .nav-links{display:flex; gap:14px; flex-wrap:wrap}
-  .nav-links a{
-    color:var(--muted); text-decoration:none; padding:6px 8px; border-radius:10px;
-  }
+  .nav-links a{color:var(--muted); text-decoration:none; padding:6px 8px; border-radius:10px}
   .nav-links a:hover{ background:var(--green-50); color:var(--green-700) }
-
-  .nav-actions button{
-    border:1px solid rgba(0,0,0,.08);
-    background:var(--card); color:var(--ink);
-    padding:8px 12px; border-radius:10px; cursor:pointer;
-  }
+  .nav-actions button{border:1px solid rgba(0,0,0,.08); background:var(--card); color:var(--ink); padding:8px 12px; border-radius:10px; cursor:pointer}
   .nav-actions button:hover{ border-color:var(--green-600); color:var(--green-700) }
 
-  /* Hero */
+  .side-nav{
+    background:var(--card);
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:var(--radius);
+    padding:14px;
+    height:max-content;
+  }
+  .side-nav h3{margin:0 0 10px; color:var(--brown-700); font-size:1rem}
+  .side-nav a{
+    display:block; padding:8px 10px; border-radius:10px; text-decoration:none; color:var(--muted); margin-bottom:6px
+  }
+  .side-nav a:hover{background:var(--green-50); color:var(--green-700)}
+
   .hero{
     padding:64px 16px;
     background:
       radial-gradient(1200px 400px at 50% -20%, rgba(46,125,50,.12), transparent 60%),
       radial-gradient(800px 300px at 100% 0%, rgba(121,85,72,.10), transparent 60%);
+    text-align:center;
   }
-  .hero h1{
-    margin:0 0 18px; font-size:clamp(1.6rem, 2.4vw + 1rem, 2.4rem);
-    color:var(--ink);
-  }
+  .hero h1{margin:0 0 18px; font-size:clamp(1.6rem, 2.4vw + 1rem, 2.4rem); color:var(--ink)}
   .hero-cta{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap }
-  .hero-cta a{
-    display:inline-block; text-decoration:none; font-weight:600;
-    padding:10px 14px; border-radius:999px;
-    border:1px solid var(--green-600); color:white; background:var(--green-700);
-  }
-  .hero-cta a:nth-child(2){
-    color:var(--brown-700); background:white; border-color:var(--brown-700);
-  }
+  .hero-cta a{display:inline-block; text-decoration:none; font-weight:600; padding:10px 14px; border-radius:999px; border:1px solid var(--green-600); color:#fff; background:var(--green-700)}
+  .hero-cta a:nth-child(2){color:var(--brown-700); background:#fff; border-color:var(--brown-700)}
   .hero-cta a:hover{ filter:brightness(.97) }
 
-  /* Headings */
   h2{ margin:0 0 16px; color:var(--brown-700); font-size:1.3rem }
 
-  /* Product grid */
   #shoes > div,
   #chalk > div,
   #chalkbags > div,
   #skin > div,
   #pads > div,
-  #training > div{
-    display:flex; gap:20px; flex-wrap:wrap;
-  }
+  #training > div{display:flex; gap:20px; flex-wrap:wrap}
 
   article{
     background:var(--card);
@@ -107,27 +107,15 @@
     padding:14px;
     box-shadow:0 1px 0 rgba(0,0,0,.03);
     transition:transform .12s ease, box-shadow .12s ease;
+    flex:1 1 250px;
   }
-  article:hover{
-    transform:translateY(-2px);
-    box-shadow:0 10px 20px rgba(46,125,50,.08);
-  }
+  article:hover{transform:translateY(-2px); box-shadow:0 10px 20px rgba(46,125,50,.08)}
   article h3{ margin:12px 0 6px; font-size:1.05rem }
   article p{ margin:0 0 10px; color:var(--muted) }
-  article button{
-    display:inline-block; padding:8px 12px; cursor:pointer;
-    background:var(--green-700); color:#fff; border:0; border-radius:10px;
-  }
+  article button{display:inline-block; padding:8px 12px; cursor:pointer; background:var(--green-700); color:#fff; border:0; border-radius:10px}
   article button:hover{ background:var(--green-600) }
+  article > div{border-radius:12px; overflow:hidden; border:1px solid rgba(0,0,0,.06); background:#fff}
 
-  /* Image wrappers you already have inline get a soft frame */
-  article > div{
-    border-radius:12px; overflow:hidden;
-    border:1px solid rgba(0,0,0,.06);
-    background:#fff;
-  }
-
-  /* Newsletter */
   #search{
     background:var(--green-50);
     border:1px solid rgba(0,0,0,.06);
@@ -135,368 +123,393 @@
     padding:24px 16px;
   }
   #search form{ display:flex; gap:10px; flex-wrap:wrap }
-  #search input[type="email"]{
-    flex:1 1 260px; padding:10px 12px;
-    border:1px solid rgba(0,0,0,.15); border-radius:10px;
-  }
-  #search button{
-    padding:10px 14px; border-radius:10px; border:0;
-    background:var(--brown-700); color:#fff; cursor:pointer;
-  }
+  #search input[type="email"]{flex:1 1 260px; padding:10px 12px; border:1px solid rgba(0,0,0,.15); border-radius:10px}
+  #search button{padding:10px 14px; border-radius:10px; border:0; background:var(--brown-700); color:#fff; cursor:pointer}
   #search button:hover{ background:var(--brown-600) }
 
-  /* Footer */
+  .main-card{
+    background:var(--card);
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:var(--radius);
+    padding:0;
+  }
+
+  .aside-card{
+    background:var(--card);
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:var(--radius);
+    padding:14px;
+    height:max-content;
+  }
+  .aside-card h3{color:var(--green-700); margin-top:0}
+
   footer{
-    border-top:1px solid rgba(0,0,0,.06);
-    padding:24px 16px; margin-top:48px; background:#fff;
+    border:1px solid rgba(0,0,0,.06);
+    padding:24px 16px;
+    background:#fff;
+    border-radius:var(--radius);
+    text-align:center;
   }
   footer p{ margin:0 0 8px; color:var(--muted) }
-  footer nav{ display:flex; gap:14px; flex-wrap:wrap }
+  footer nav{ display:flex; gap:14px; flex-wrap:wrap; justify-content:center }
   footer a{ color:var(--green-700); text-decoration:none }
   footer a:hover{ text-decoration:underline }
 
-  /* Small screens */
-  @media (max-width:720px){
-    .nav{ gap:10px }
-    .nav-links{ display:none } /* keep it simple; could add a burger later */
+  #new{
+    background: var(--green-50);
+    border-radius: var(--radius);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 32px 16px;
+    text-align: center;
+    max-width: 1100px;
+    margin: 48px auto;
   }
-  /* Shop by Category section */
-#new {
-  background: var(--green-50);
-  border-radius: var(--radius);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  padding: 32px 16px;
-  text-align: center;
-  max-width: 1100px;
-  margin: 48px auto;
-}
+  #new h2{ color: var(--brown-700); font-size: 1.4rem; margin-bottom: 24px; text-align: left }
+  #new div{ display:flex; flex-wrap:wrap; justify-content:center; gap:14px }
+  #new a{
+    display:inline-block; padding:12px 18px; border-radius:999px; background:var(--green-700);
+    color:#fff; text-decoration:none; font-weight:600; transition:all .2s ease
+  }
+  #new a:hover{ background:var(--green-600); transform:translateY(-2px); box-shadow:0 4px 10px rgba(46,125,50,.2) }
 
-#new h2 {
-  color: var(--brown-700);
-  font-size: 1.4rem;
-  margin-bottom: 24px;
-  text-align: center;
-}
+  .back-to-top{
+    position:fixed; right:20px; bottom:20px; z-index:50;
+    width:44px; height:44px; border-radius:999px; display:grid; place-items:center;
+    background:var(--green-700); color:#fff; text-decoration:none; font-weight:800;
+    border:1px solid rgba(0,0,0,.1); box-shadow:0 6px 18px rgba(46,125,50,.25)
+  }
+  .back-to-top:hover{background:var(--green-600)}
 
-#new div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px;
-}
-
-#new a {
-  display: inline-block;
-  padding: 12px 18px;
-  border-radius: 999px;
-  background: var(--green-700);
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-#new a:hover {
-  background: var(--green-600);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(46, 125, 50, 0.2);
-}
-
-</style>
-
+  @media (max-width:900px){
+    .site{
+      grid-template-columns:1fr;
+      grid-template-rows:auto auto auto 1fr auto;
+      grid-template-areas:
+        "header"
+        "nav"
+        "aside"
+        "main"
+        "footer";
+    }
+    .nav-links{display:none}
+    section{margin:24px auto}
+  }
+  </style>
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <a class="brand" href="index.html">Crux Supply</a>
-      <nav class="nav-links">
-        <a href="index.html#new">New</a>
-        <a href="index.html#shoes">Shoes</a> 
-        <a href="index.html#chalk">Chalk</a>
-        <a href="index.html#chalkbags">Chalk Bags</a>
-        <a href="index.html#skin">Skin Care</a>
-        <a href="index.html#pads">Crash Pads</a>
-        <a href="index.html#training">Training</a>
-      </nav>
-      <div class="nav-actions">
-        <button onclick="location.href='index.html#search'">Search</button>
-        <button onclick="location.href='account.html'">Account</button>
-        <button onclick="location.href='cart.html'">Cart</button>
+  <div class="site">
+    <header>
+      <div class="nav">
+        <a class="brand" href="index.html">Crux Supply</a>
+        <nav class="nav-links">
+          <a href="index.html#new">New</a>
+          <a href="index.html#shoes">Shoes</a>
+          <a href="index.html#chalk">Chalk</a>
+          <a href="index.html#chalkbags">Chalk Bags</a>
+          <a href="index.html#skin">Skin Care</a>
+          <a href="index.html#pads">Crash Pads</a>
+          <a href="index.html#training">Training</a>
+        </nav>
+        <div class="nav-actions">
+          <button onclick="location.href='index.html#search'">Search</button>
+          <button onclick="location.href='account.html'">Account</button>
+          <button onclick="location.href='cart.html'">Cart</button>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="hero" style="text-align: center;">
-      <h1>Send Season '25 — gear up for your next project.</h1>
-      <div class="hero-cta">
-        <a href="#featured">Shop Featured</a>
-        <a href="#pads">Explore Crash Pads</a>
-      </div>
-    </section>
-
-    <section id="new">
-      <h2 style="text-align: left;">Shop by Category</h2>
-      <div>
-        <a href="#shoes">Climbing Shoes</a>
-        <a href="#chalk">Chalk</a>
-        <a href="#chalkbags">Chalk Bags</a>
-        <a href="#skin">Skin Care</a>
-        <a href="#pads">Crash Pads</a>
-        <a href="#training">Training (Boards, Grips)</a>
-      </div>
-    </section>
-
-    <!-- Helper note for editors: replace PASTE_IMAGE_LINK with your image URL -->
-
-    <section id="shoes">
-      <h2 style="text-align: center;">Climbing Shoes</h2>
-      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="https://www.zumont.ro/51882-large_default/espadrile-escalada-red-chili-puzzle-b-ware.jpg" alt="EdgePro LV bouldering shoe" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>EdgePro LV</h3>
-          <p>Price: $149 · Sizes: EU 34–44</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="https://www.zumont.ro/28859-large_default/papuci-de-catarare-la-sportiva-skwama-vegan.jpg" alt="Vertex All-Round climbing shoe" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Vertex All-Round</h3>
-          <p>Price: $119 · Flat last for all-day comfort</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="https://www.zumont.ro/7061-large_default/papuci-de-catarare-la-sportiva-solution-woman-.jpg" alt="GripMax Aggro climbing shoe" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>GripMax Aggro</h3>
-          <p>Price: $169 · Aggressive profile for steep terrain</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="https://www.zumont.ro/30560-large_default/papuci-de-catarare-la-sportiva-miura-woman-lace.jpg" alt="Summit Eco vegan climbing shoe" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Summit Eco</h3>
-          <p>Price: $139 · Recycled rubber and vegan materials</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-      </div>
-    </section>
-
-    <section id="chalk">
-      <h2 style="text-align: center;">Chalk</h2>
-      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk1.jpg" alt="PureGrip chalk ball" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>PureGrip Chalk Ball</h3>
-          <p>Price: $7</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk2.jpg" alt="PureGrip 300g chalk refill" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>PureGrip Refill 300g</h3>
-          <p>Price: $14</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk3.jpeg" alt="LiquidGrip Pro liquid chalk" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>LiquidGrip Pro</h3>
-          <p>Price: $16 · Fast-drying formula</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk4.webp" alt="EcoGrip chalk alternative" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>EcoGrip Blend</h3>
-          <p>Price: $12 · Biodegradable chalk alternative</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-      </div>
-    </section>
-
-    <section id="chalkbags">
-      <h2 style="text-align: center;">Chalk Bags</h2>
-      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/bag1.jpeg" alt="Classic chalk bag with belt" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Classic Chalk Bag</h3>
-          <p>Price: $25 · Adjustable belt included</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/bag2.jpg" alt="Rolltop chalk bag water-resistant" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Rolltop Chalk Bag</h3>
-          <p>Price: $32 · Water-resistant fabric</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/bag3.jpeg" alt="Boulder bucket pro large capacity" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Boulder Bucket Pro</h3>
-          <p>Price: $39 · Large capacity with brush holders</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/bag4.jpg" alt="Mini chalk bag compact" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Mini Chalk Bag</h3>
-          <p>Price: $19 · Compact and lightweight</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-      </div>
-    </section>
-
-    <section id="skin">
-      <h2 style="text-align: center;">Skin Care</h2>
-      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/skin1.jpeg" alt="Repair balm for climbers' skin" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Repair Balm</h3>
-          <p>Price: $12 · Natural healing salve</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/skin2.webp" alt="Finger tape roll" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Finger Tape Roll</h3>
-          <p>Price: $8 · 1.5cm width, long-lasting adhesive</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/sin3.jpeg" alt="Skin file kit for calluses" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Skin File Kit</h3>
-          <p>Price: $19 · Keep calluses smooth and healthy</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/skin4.png" alt="Grip salve XL" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Grip Salve XL</h3>
-          <p>Price: $18 · Deep recovery for heavy training days</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-      </div>
-    </section>
-
-    <section id="pads">
-      <h2 style="text-align: center;">Crash Pads</h2>
-      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/crash1.jpeg" alt="CrashPad Solo compact pad" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>CrashPad Solo</h3>
-          <p>Price: $219 · Compact daily driver</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/crash2.jpeg" alt="CrashPad Mega oversized pad" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>CrashPad Mega</h3>
-          <p>Price: $329 · Oversized coverage for highballs</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/crash3.webp" alt="CrashPad Duo folding pad" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>CrashPad Duo</h3>
-          <p>Price: $279 · Two-panel folding pad for easy carry</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/crash4.jpeg" alt="CrashPad Pro reinforced pad" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>CrashPad Pro</h3>
-          <p>Price: $359 · Reinforced corners, improved foam density</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-      </div>
-    </section>
-
-    <section id="training">
-      <h2 style="text-align: center;">Training</h2>
-      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/train1.jpeg" alt="HangBoard Pro" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>HangBoard Pro</h3>
-          <p>Price: $79</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/train2.jpeg" alt="Grip rings pair" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Grip Rings (Pair)</h3>
-          <p>Price: $29</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/train3.png" alt="Portable hang bar" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Portable Hang Bar</h3>
-          <p>Price: $59 · Travel training bar</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-        <article style="flex: 1; min-width: 250px;">
-          <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
-            <img src="Crux Supply — Bouldering & Climbing Gear_files/train4.jpg" alt="Finger strength kit" style="width:100%;height:100%;object-fit:cover;" />
-          </div>
-          <h3>Finger Strength Kit</h3>
-          <p>Price: $89 · Full home setup for fingerboard and resistance bands</p>
-          <button onclick="location.href='product.html'">Add to Cart</button>
-        </article>
-      </div>
-    </section>
-
-    <section id="search">
-      <h3>Join our list</h3>
-      <p>Get early access to shoe drops, pad restocks, and training tips from coaches.</p>
-      <form onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
-        <input type="email" placeholder="you@example.com" required />
-        <button type="submit">Subscribe</button>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <p>© <span id="y"></span> Crux Supply. Climb smart. Land soft.</p>
-    <nav>
-      <a href="faq.html">Shipping & Returns</a>
-      <a href="faq.html#size">Size Guide</a>
-      <a href="faq.html#warranty">Warranty</a>
-      <a href="contact.html">Contact</a>
-      <a href="about.html">About</a>
+    <nav class="side-nav">
+      <h3>Categories</h3>
+      <a href="#new">Shop by Category</a>
+      <a href="#shoes">Climbing Shoes</a>
+      <a href="#chalk">Chalk</a>
+      <a href="#chalkbags">Chalk Bags</a>
+      <a href="#skin">Skin Care</a>
+      <a href="#pads">Crash Pads</a>
+      <a href="#training">Training</a>
     </nav>
-  </footer>
+
+    <main>
+      <div class="main-card">
+        <section class="hero" style="text-align: center;">
+          <h1>Send Season '25 — gear up for your next project.</h1>
+          <div class="hero-cta">
+            <a href="#featured">Shop Featured</a>
+            <a href="#pads">Explore Crash Pads</a>
+          </div>
+        </section>
+
+        <section id="new">
+          <h2 style="text-align: left;">Shop by Category</h2>
+          <div>
+            <a href="#shoes">Climbing Shoes</a>
+            <a href="#chalk">Chalk</a>
+            <a href="#chalkbags">Chalk Bags</a>
+            <a href="#skin">Skin Care</a>
+            <a href="#pads">Crash Pads</a>
+            <a href="#training">Training (Boards, Grips)</a>
+          </div>
+        </section>
+
+        <section id="shoes">
+          <h2 style="text-align: center;">Climbing Shoes</h2>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="https://www.zumont.ro/51882-large_default/espadrile-escalada-red-chili-puzzle-b-ware.jpg" alt="EdgePro LV bouldering shoe" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>EdgePro LV</h3>
+              <p>Price: $149 · Sizes: EU 34–44</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="https://www.zumont.ro/28859-large_default/papuci-de-catarare-la-sportiva-skwama-vegan.jpg" alt="Vertex All-Round climbing shoe" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Vertex All-Round</h3>
+              <p>Price: $119 · Flat last for all-day comfort</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="https://www.zumont.ro/7061-large_default/papuci-de-catarare-la-sportiva-solution-woman-.jpg" alt="GripMax Aggro climbing shoe" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>GripMax Aggro</h3>
+              <p>Price: $169 · Aggressive profile for steep terrain</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="https://www.zumont.ro/30560-large_default/papuci-de-catarare-la-sportiva-miura-woman-lace.jpg" alt="Summit Eco vegan climbing shoe" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Summit Eco</h3>
+              <p>Price: $139 · Recycled rubber and vegan materials</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="chalk">
+          <h2 style="text-align: center;">Chalk</h2>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk1.jpg" alt="PureGrip chalk ball" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>PureGrip Chalk Ball</h3>
+              <p>Price: $7</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk2.jpg" alt="PureGrip 300g chalk refill" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>PureGrip Refill 300g</h3>
+              <p>Price: $14</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk3.jpeg" alt="LiquidGrip Pro liquid chalk" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>LiquidGrip Pro</h3>
+              <p>Price: $16 · Fast-drying formula</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/chalk4.webp" alt="EcoGrip chalk alternative" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>EcoGrip Blend</h3>
+              <p>Price: $12 · Biodegradable chalk alternative</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="chalkbags">
+          <h2 style="text-align: center;">Chalk Bags</h2>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/bag1.jpeg" alt="Classic chalk bag with belt" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Classic Chalk Bag</h3>
+              <p>Price: $25 · Adjustable belt included</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/bag2.jpg" alt="Rolltop chalk bag water-resistant" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Rolltop Chalk Bag</h3>
+              <p>Price: $32 · Water-resistant fabric</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/bag3.jpeg" alt="Boulder bucket pro large capacity" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Boulder Bucket Pro</h3>
+              <p>Price: $39 · Large capacity with brush holders</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/bag4.jpg" alt="Mini chalk bag compact" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Mini Chalk Bag</h3>
+              <p>Price: $19 · Compact and lightweight</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="skin">
+          <h2 style="text-align: center;">Skin Care</h2>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/skin1.jpeg" alt="Repair balm for climbers' skin" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Repair Balm</h3>
+              <p>Price: $12 · Natural healing salve</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/skin2.webp" alt="Finger tape roll" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Finger Tape Roll</h3>
+              <p>Price: $8 · 1.5cm width, long-lasting adhesive</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/sin3.jpeg" alt="Skin file kit for calluses" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Skin File Kit</h3>
+              <p>Price: $19 · Keep calluses smooth and healthy</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/skin4.png" alt="Grip salve XL" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Grip Salve XL</h3>
+              <p>Price: $18 · Deep recovery for heavy training days</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="pads">
+          <h2 style="text-align: center;">Crash Pads</h2>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/crash1.jpeg" alt="CrashPad Solo compact pad" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>CrashPad Solo</h3>
+              <p>Price: $219 · Compact daily driver</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/crash2.jpeg" alt="CrashPad Mega oversized pad" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>CrashPad Mega</h3>
+              <p>Price: $329 · Oversized coverage for highballs</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/crash3.webp" alt="CrashPad Duo folding pad" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>CrashPad Duo</h3>
+              <p>Price: $279 · Two-panel folding pad for easy carry</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/crash4.jpeg" alt="CrashPad Pro reinforced pad" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>CrashPad Pro</h3>
+              <p>Price: $359 · Reinforced corners, improved foam density</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="training">
+          <h2 style="text-align: center;">Training</h2>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/train1.jpeg" alt="HangBoard Pro" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>HangBoard Pro</h3>
+              <p>Price: $79</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/train2.jpeg" alt="Grip rings pair" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Grip Rings (Pair)</h3>
+              <p>Price: $29</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/train3.png" alt="Portable hang bar" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Portable Hang Bar</h3>
+              <p>Price: $59 · Travel training bar</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+            <article style="flex: 1; min-width: 250px;">
+              <div style="width:300px;height:300px;overflow:hidden;margin:0 auto;">
+                <img src="Crux Supply — Bouldering & Climbing Gear_files/train4.jpg" alt="Finger strength kit" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <h3>Finger Strength Kit</h3>
+              <p>Price: $89 · Full home setup for fingerboard and resistance bands</p>
+              <button onclick="location.href='product.html'">Add to Cart</button>
+            </article>
+          </div>
+        </section>
+
+        <section id="search">
+          <h3>Join our list</h3>
+          <p>Get early access to shoe drops, pad restocks, and training tips from coaches.</p>
+          <form onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+            <input type="email" placeholder="you@example.com" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <aside class="aside-card">
+      <h3>Quick Links</h3>
+      <p><a href="#pads">Top Crash Pads</a></p>
+      <p><a href="#shoes">New Shoe Drops</a></p>
+      <p><a href="#training">Train at Home</a></p>
+    </aside>
+
+    <footer>
+      <p>© <span id="y"></span> Crux Supply. Climb smart. Land soft.</p>
+      <nav>
+        <a href="faq.html">Shipping & Returns</a>
+        <a href="faq.html#size">Size Guide</a>
+        <a href="faq.html#warranty">Warranty</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+      </nav>
+    </footer>
+  </div>
+
+  <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
 
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>

@@ -1,126 +1,78 @@
 <!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Account — Crux Supply</title>
-<style>
-/* ===== If you DON'T already have the shared theme, keep this palette ===== */
-:root{
-  --green-700:#2e7d32; --green-600:#388e3c; --green-50:#e8f5e9;
-  --brown-700:#795548; --brown-600:#6d4c41;
-  --ink:#1b1b1b; --muted:#5a5a5a; --bg:#f5f3ef; --card:#fff; --radius:14px;
-}
-*{box-sizing:border-box} html,body{margin:0;padding:0}
-body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
-
-/* Shared header/footer (works with your existing HTML) */
-header{position:sticky;top:0;z-index:20;background:linear-gradient(0deg,rgba(255,255,255,.92),rgba(255,255,255,.98));backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid rgba(0,0,0,.06)}
-.nav{max-width:1100px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{font-weight:800;text-decoration:none;color:var(--green-700)}
-.nav-links{display:flex;gap:14px;flex-wrap:wrap}
-.nav-links a{color:var(--muted);text-decoration:none;padding:6px 8px;border-radius:10px}
-.nav-links a:hover{background:var(--green-50);color:var(--green-700)}
-.nav-actions button{border:1px solid rgba(0,0,0,.08);background:var(--card);color:var(--ink);padding:8px 12px;border-radius:10px;cursor:pointer}
-.nav-actions button:hover{border-color:var(--green-600);color:var(--green-700)}
-footer{border-top:1px solid rgba(0,0,0,.06);background:#fff;margin-top:48px}
-footer p{margin:0 0 8px;color:var(--muted)}
-footer nav{display:flex;gap:14px;flex-wrap:wrap}
-footer a{color:var(--green-700);text-decoration:none}
-footer a:hover{text-decoration:underline}
-
-/* ===== Account page ===== */
-main{
-  max-width:420px;
-  margin:72px auto;
-  padding:0 16px;
-}
-main h1{
-  text-align:center;
-  color:var(--brown-700);
-  margin:0 0 18px;
-  font-size:clamp(1.4rem,2vw+1rem,2rem);
-}
-form{
-  background:var(--card);
-  border:1px solid rgba(0,0,0,.06);
-  border-radius:var(--radius);
-  padding:22px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  box-shadow:0 1px 0 rgba(0,0,0,.03);
-}
-input[type="email"], input[type="password"]{
-  padding:12px 12px;
-  border:1px solid rgba(0,0,0,.15);
-  border-radius:10px;
-  background:#fff;
-  outline:none;
-  transition:border-color .15s ease, box-shadow .15s ease;
-}
-input:focus{
-  border-color:var(--green-600);
-  box-shadow:0 0 0 3px rgba(46,125,50,.15);
-}
-button[type="submit"]{
-  margin-top:6px;
-  padding:12px 14px;
-  border:0; border-radius:10px;
-  background:var(--green-700); color:#fff;
-  font-weight:600; cursor:pointer;
-}
-button[type="submit"]:hover{ background:var(--green-600) }
-
-main p{
-  text-align:center;
-  color:var(--muted);
-  margin:14px 0 0;
-}
-main a{ color:var(--brown-700); text-decoration:none; font-weight:600 }
-main a:hover{ color:var(--brown-600); text-decoration:underline }
-
-/* Small screens */
-@media (max-width:720px){
-  .nav-links{display:none}
-}
-</style>
+<html lang="en" id="top">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account — Crux Supply</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <a class="brand" href="index.html">Crux Supply</a>
-      <nav class="nav-links">
-        <a href="index.html#new">New</a>
-        <a href="index.html#shoes">Shoes</a>
-        <a href="index.html#chalk">Chalk</a>
-        <a href="index.html#chalkbags">Chalk Bags</a>
-        <a href="index.html#skin">Skin Care</a>
-        <a href="index.html#pads">Crash Pads</a>
-        <a href="index.html#training">Training</a>
-      </nav>
-      <div class="nav-actions">
-        <button onclick="location.href='index.html#search'">Search</button>
-        <button onclick="location.href='account.html'">Account</button>
-        <button onclick="location.href='cart.html'">Cart</button>
+  <div class="site">
+    <header>
+      <div class="header-bar">
+        <div class="navbar">
+          <a class="brand" href="index.html">Crux Supply</a>
+          <div class="nav-actions">
+            <button onclick="location.href='index.html#search'">Search</button>
+            <button onclick="location.href='account.html'">Account</button>
+            <button onclick="location.href='cart.html'">Cart</button>
+          </div>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <h1>My Account</h1>
-    <form>
-      <input type="email" placeholder="Email" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
-    <p>No account? <a href="#">Register here</a></p>
-  </main>
-
-  <footer>
-    <p>© <span id="y"></span> Crux Supply.</p>
-    <nav>
+    <nav class="side-nav">
+      <h3>Browse</h3>
+      <a href="index.html#new">New</a>
+      <a href="index.html#shoes">Shoes</a>
+      <a href="index.html#chalk">Chalk</a>
+      <a href="index.html#chalkbags">Chalk Bags</a>
+      <a href="index.html#skin">Skin Care</a>
+      <a href="index.html#pads">Crash Pads</a>
+      <a href="index.html#training">Training</a>
+      <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
     </nav>
-  </footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+
+    <main>
+      <div class="main-card">
+        <h1>My Account</h1>
+        <form onsubmit="event.preventDefault(); alert('Logged in');">
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Login</button>
+        </form>
+        <p>No account? <a href="register.html" id="register-link">Register here</a></p>
+      </div>
+    </main>
+
+    <aside class="aside-card">
+      <h3>Account Tips</h3>
+      <p>• Use your email to log in.</p>
+      <p>• Forgotten password? Click “Reset” on the login page.</p>
+      <p>• You can track orders under “My Orders”.</p>
+    </aside>
+
+    <footer>
+      <p>© <span id="y"></span> Crux Supply.</p>
+      <nav>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </footer>
+  </div>
+
+  <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    (function () {
+      var q = new URLSearchParams(location.search);
+      if (q.get('action') === 'register' || location.hash === '#register') {
+        location.href = 'register.html';
+      }
+    })();
+  </script>
 </body>
 </html>

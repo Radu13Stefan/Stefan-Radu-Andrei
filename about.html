@@ -1,66 +1,86 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About — Crux Supply</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <header>
-    <div class="nav">
-      <a class="brand" href="index.html">Crux Supply</a>
-      <nav class="nav-links">
-        <a href="index.html#new">New</a>
-        <a href="index.html#shoes">Shoes</a>
-        <a href="index.html#chalk">Chalk</a>
-        <a href="index.html#chalkbags">Chalk Bags</a>
-        <a href="index.html#skin">Skin Care</a>
-        <a href="index.html#pads">Crash Pads</a>
-        <a href="index.html#training">Training</a>
-      </nav>
-      <div class="nav-actions">
-        <button onclick="location.href='index.html#search'">Search</button>
-        <button onclick="location.href='account.html'">Account</button>
-        <button onclick="location.href='cart.html'">Cart</button>
-      </div>
-    </div>
-  </header>
 
-  <main>
-  <section class="page-hero">
-    <div class="container">
-      <h1>About Crux Supply</h1>
-      <p class="page-intro">Born in the boulders, built by climbers — premium gear for indoor and outdoor projects.</p>
-    </div>
-  </section>
-
-  <section>
-    <div class="container about-card">
-      <div class="about-grid">
-        <div>
-          <p class="lead">
-            We’re a small crew of climbers obsessed with fit, foam density, and friction.
-            From problem-setting nights to highball weekends, we test gear the hard way—
-            then bring only the best into the shop.
-          </p>
-          <span class="badge">Since 2004 · Community-run</span>
+  <div class="site">
+    <!-- HEADER -->
+    <header>
+      <div class="header-bar">
+        <div class="navbar">
+          <a class="brand" href="index.html">Crux Supply</a>
+          <div class="nav-actions">
+            <button onclick="location.href='index.html#search'">Search</button>
+            <button onclick="location.href='account.html'">Account</button>
+            <button onclick="location.href='cart.html'">Cart</button>
+          </div>
         </div>
-        <img src="assets/images/about-team.jpg" alt="Our Team">
       </div>
-    </div>
-  </section>
-</main>
+    </header>
 
-
-  <footer>
-    <p>© <span id="y"></span> Crux Supply.</p>
-    <nav>
+    <!-- NAV lateral (același set de linkuri ca în headerul inițial) -->
+    <nav class="side-nav">
+      <h3>Browse</h3>
+      <a href="index.html#new">New</a>
+      <a href="index.html#shoes">Shoes</a>
+      <a href="index.html#chalk">Chalk</a>
+      <a href="index.html#chalkbags">Chalk Bags</a>
+      <a href="index.html#skin">Skin Care</a>
+      <a href="index.html#pads">Crash Pads</a>
+      <a href="index.html#training">Training</a>
       <a href="contact.html">Contact</a>
       <a href="faq.html">FAQ</a>
     </nav>
-  </footer>
+
+    <!-- MAIN -->
+    <main>
+      <div class="main-card">
+        <section class="page-hero" style="padding:0">
+          <div class="container">
+            <h1>About Crux Supply</h1>
+            <p class="page-intro">Born in the boulders, built by climbers — premium gear for indoor and outdoor projects.</p>
+          </div>
+        </section>
+
+        <section>
+          <div class="container about-card" style="margin-top:0">
+            <div class="about-grid">
+              <div>
+                <p class="lead">
+                  We’re a small crew of climbers obsessed with fit, foam density, and friction.
+                  From problem-setting nights to highball weekends, we test gear the hard way—
+                  then bring only the best into the shop.
+                </p>
+                <span class="badge">Since 2004 · Community-run</span>
+              </div>
+              <img src="assets/images/about-team.jpg" alt="Our Team">
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- ASIDE (gol vizual, doar pentru a respecta cerința de layout) -->
+    <aside class="aside-card" aria-label="Sidebar"></aside>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>© <span id="y"></span> Crux Supply.</p>
+      <nav>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </footer>
+  </div>
+
+  <!-- Buton „Mergi sus” -->
+  <a class="back-to-top" href="#top" aria-label="Back to top">↑</a>
+
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
